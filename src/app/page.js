@@ -4,13 +4,32 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles/login.module.css";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import api from "../app/service/api";
 
 export default function Login() {
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    router.push("/home")
+
+    try {
+      const response = await api.post("/usuarios/login", {
+        email,
+        senha,
+      });
+
+      const { token } = response.data;
+
+      localStorage.setItem("token", token);
+      router.push("/home");
+    } catch (error) {
+      console.error("Erro no login:", error);
+      setMensagem("Usuário ou senha incorretos. Tente novamente.");
+    }
   };
 
   return (
@@ -19,9 +38,28 @@ export default function Login() {
 
       <div className={styles.loginBox}>
         <h1 className={styles.title}>Entrar no Petbook</h1>
-        <input type="email" placeholder="Email" className={styles.input} />
-        <input type="password" placeholder="Senha" className={styles.input} />
-        <button className={styles.button} onClick={handleLogin} >Entrar</button>
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            className={styles.input}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            className={styles.input}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+          <button type="submit" className={styles.button}>Entrar</button>
+        </form>
+
+        {mensagem && <p className={styles.error}>{mensagem}</p>}
+
         <p>
           Não tem uma conta?{" "}
           <Link href="/cadastro" className={styles.link}>
@@ -32,4 +70,3 @@ export default function Login() {
     </div>
   );
 }
-

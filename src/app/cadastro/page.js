@@ -10,6 +10,7 @@ import styles from "../styles/cadastro.module.css";
 export default function Cadastro() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
+  
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
   const router = useRouter();
