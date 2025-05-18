@@ -16,21 +16,27 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await api.post("/usuarios/login", {
-        email,
-        senha,
-      });
-
-      const { token } = response.data;
-
-      localStorage.setItem("token", token);
-      router.push("/home");
-    } catch (error) {
-      console.error("Erro no login:", error);
-      setMensagem("Usuário ou senha incorretos. Tente novamente.");
+   try {
+     const response = await api.post("/usuarios/login", {
+      email,
+      senha,
+    });
+    
+    const userResponse = await api.get(`/usuarios/email/${email}`, {
+      headers: {
+        Authorization: `Bearer ${response.data.token}`
+      }
+    });
+    
+    // Salvar os dados completos no localStorage
+    localStorage.setItem("usuarioLogado", JSON.stringify(userResponse.data));
+    router.push("/home");
+  } catch (error) {
+    console.error("Erro no login:", error);
+    setMensagem("Usuário ou senha incorretos. Tente novamente.");
     }
   };
+
 
   return (
     <div className={styles.container}>

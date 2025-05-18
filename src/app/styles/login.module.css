@@ -5,15 +5,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 4rem; 
-  position: relative;
 }
 
 .logo {
   width: 185px; 
   height: auto;
-  position: absolute;
-  top: 3%;
 }
 
 
@@ -25,7 +21,6 @@
   width: 20rem;
   height: 16rem;
   text-align: center;
-  position: relative;
 }
 
 .title {
@@ -77,4 +72,24 @@
     text-align: center;
   }
   
+  @media (max-width: 480px) {
+    .loginBox {
+      width: 15rem;
+      height: 14rem;
+    }
+
+    .logo {
+      width: 140px; 
+      height: auto;
+    }
+    
   
+    .title {
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+  
+    .button {
+      font-size: 1rem;
+    }
+  }

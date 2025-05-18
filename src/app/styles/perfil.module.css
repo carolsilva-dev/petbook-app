@@ -1,0 +1,186 @@
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  flex: 1;
+  min-width: 120px;
+  padding: 12px;
+  background-color: #e4e6eb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.tabs button:hover {
+  background-color: #d8dadf;
+}
+
+.active {
+  background-color: #1877f2;
+  color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.petList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.petItem {
+  background-color: #f0f2f5;
+  padding: 14px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: relative;
+  font-size: 14px;
+}
+
+.petItem span {
+  color: #333;
+  line-height: 1.4;
+}
+
+.petItem > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.editButton {
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.editButton:hover {
+  background-color: #e0a800;
+}
+
+.deleteButton {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.deleteButton:hover {
+  background-color: #e03e3f;
+}
+
+.editForm {
+  background-color: #f0f2f5;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editForm input,
+.editForm select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+.editForm input:focus,
+.editForm select:focus {
+  border-color: #1877f2;
+  outline: none;
+}
+
+.editActions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.editActions button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.editActions button:first-child {
+  background-color: #28a745;
+  color: white;
+}
+
+.editActions button:first-child:hover {
+  background-color: #218838;
+}
+
+.editActions button:last-child {
+  background-color: #6c757d;
+  color: white;
+}
+
+.editActions button:last-child:hover {
+  background-color: #5a6268;
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+  }
+
+  .petList {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .petItem {
+    width: 100%;
+  }
+
+  .editActions {
+    justify-content: center;
+  }
+}

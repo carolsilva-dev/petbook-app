@@ -14,6 +14,7 @@ export default function Cadastro() {
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
   const router = useRouter();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
